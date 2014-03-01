@@ -1,0 +1,291 @@
+.hidden {
+  visibility: hidden;
+}
+
+/* Getting rid of the collapsing with pushState */
+div#content {
+  min-height: 500px; 
+  height:auto !important; 
+  height: 500px;
+  overflow: hidden;
+
+  width: 80%;
+  display: block;
+
+  margin-right: 0px;
+  margin-left: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* Responsive typeface */
+body {
+  text-align: center;
+  font-family: 'Droid Serif', serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* Animation */
+  animation-name: appear;
+  animation-duration: 0.5s;
+  animation-iteration-count: once;
+  animation-timing-function: ease-in;
+
+  -webkit-animation-name: appear;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: once;
+  -webkit-animation-timing-function: ease-in;
+
+  -moz-animation-name: appear;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-iteration-count: once;
+  -moz-animation-timing-function: ease-in;
+
+  -o-animation-name: appear;
+  -o-animation-duration: 0.5s;
+  -o-animation-iteration-count: once;
+  -o-animation-timing-function: ease-in;
+}
+
+/* Text fade in animation */
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+body a {
+  color: #999;
+}
+
+.post a.permalink {
+  text-decoration: none;
+  color: black;
+}
+
+.post a.permalink i {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.post h1 {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+#first-post h1 {
+  font-family: 'Parisienne', cursive;
+  font-size: 26px;
+  line-height: 28px;
+}
+
+.post h2 {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.post h3 {
+  font-size: 20px;
+  line-height: 22px;
+}
+
+.post h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+/* This wraps all the contents */
+#wrapper {
+}
+
+#header {
+  float: right;
+}
+
+hr {
+  height: 1px;
+  border-width: 0px;
+  background-color: #ccc;
+}
+
+hr:last-of-type {
+  height: 0px;
+  background-color: white;
+}
+
+.post p#back {
+  text-align: center;
+}
+
+.post {
+  text-align: left;
+
+  /* Margin to make them posts attach to eachother */
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  padding: 2px;
+
+  width: 80%;
+
+  /* Make post aknowledge its children */
+  overflow: auto;
+}
+
+.post.page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+@media screen and (min-width: 900px) {
+  div#main {
+    width: 64%;
+    float: right;
+  }
+
+  div#first-post {
+    float: right;
+    width: 20%;
+
+    margin-left: 15%;
+    margin-top: 20%;
+  }
+
+  div#first-post div#fixed {
+    width: 20%;
+    position: fixed;
+  }
+}
+
+.circular {
+	max-width: 200px;
+	max-height: 200px;
+
+  width: 90%;
+
+  border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.title {
+  font-size: 11pt; font-family: verdana; font-weight: bold;
+}
+
+.nav {
+  margin-top: 10%;
+  float: left;
+  width: 9%;
+
+  position: fixed;
+}
+
+.nav label {
+  opacity: 0.5;
+  z-index: 9;
+  cursor: pointer;
+
+  font-size: 156pt;
+  text-align: left;
+  line-height: 200px;
+  font-family: "Varela Round", sans-serif;
+  color: gray;
+}
+
+.nav label:hover {
+  opacity: 1;
+}
+
+/* Overwrites for mobile */
+@media screen and (max-width: 500px) {
+  .nav {
+    margin-top: 100px;
+  }
+
+  .nav label {
+    line-height: 20px;
+    font-size: 80pt;
+  }
+
+
+  div#content {
+    margin-right: auto;
+  }
+
+  .post {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .post h1 {
+    font-size: 20px;
+    line-height: 22px;
+  }
+
+  .post h2 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .post h3 {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .post h4 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .circular {
+  	max-width: 125px;
+  	max-height: 125px;
+  }
+}
+
