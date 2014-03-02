@@ -15,7 +15,6 @@ function setClickHandlers() {
   });
 
   $('.post a').click(function(e) {
-    e.preventDefault();
     ajax.abortReq();
 
     // Navigate only if the url is in local context
@@ -24,6 +23,8 @@ function setClickHandlers() {
     if (!nav.isLocalUrl(permalink)) {
       return;
     }
+
+    e.preventDefault();
 
     var currentContent = helpers.content();
     var post = helpers.findParentByClass($this, 'post');
