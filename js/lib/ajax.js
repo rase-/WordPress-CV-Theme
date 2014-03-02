@@ -1,7 +1,7 @@
 var $ = require('jquery');
 var req;
 
-function getContent(pageHTML) {
+exports.getContent = function(pageHTML) {
   var $dom = $.parseHTML(pageHTML);
   var content;
   $.each($dom, function(i, el) {
