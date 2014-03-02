@@ -64,7 +64,7 @@ $(document).ready(function() {
     // If we know the contents, we can just reuse it
     if (e.state && e.state.cached) {
       console.log('Using cached content');
-      helpers.showBackArrow(e.state.isSingle);
+      helpers.showBackArrow(!e.state.isFirstPage);
       helpers.content(e.state.cached);
       setClickHandlers();
       return;

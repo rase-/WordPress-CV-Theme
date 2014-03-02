@@ -4,11 +4,11 @@ exports.isLocalUrl = function(url) {
 };
 
 exports.toPage = function(url) {
-  history.pushState({ isSingle: true }, 'changed', url);
+  history.pushState({ isFirstPage: false }, 'changed', url);
 };
 
 exports.cacheContent = function(content, url) {
-  history.replaceState({ cached: content, isSingle: !!url }, 'content', url);
+  history.replaceState({ cached: content, isFirstPage: !url }, 'content', url);
 };
 
 exports.goBack = function() {
