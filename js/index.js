@@ -1,6 +1,6 @@
 var nav = require('./lib/nav.js');
 var ajax = require('./lib/ajax.js');
-var helpers = require('./lib/dom-helpers.js');
+var dom = require('./lib/dom-helpers.js');
 
 var $ = require('jquery');
 var attachFastClick = require('fastclick');
@@ -26,20 +26,23 @@ function setClickHandlers() {
 
     e.preventDefault();
 
-    var currentContent = helpers.content();
-    var post = helpers.findParentByClass($this, 'post');
+    nav.saveScrollState(window.scrollY, window.location.href);
+    var currentContent = dom.content();
+    var post = dom.findParentByClass($this, 'post');
 
     // Clear the content and inject the content we've got now for best effect
-    helpers.content('<div class="post single">' + post.html() + '</div>');
+    // and navigate to top to make it seem like we moved to another page
+    dom.content('<div class="post single">' + post.html() + '</div>');
+    $('body').scrollTop(0);
 
     // Enable back button
-    helpers.showBackArrow(true);
+    dom.showBackArrow(true);
 
     // Navigate to new page and poll for new content
     nav.toPage(permalink);
     ajax.fetchContent(permalink, function(content) {
       if (content) {
-        helpers.content(content);
+        dom.content(content);
         nav.cacheContent(content, permalink);
         setClickHandlers();
       }
@@ -52,7 +55,7 @@ $(document).ready(function() {
   if (!supportsHistoryAPI) return;
 
   setClickHandlers();
-  nav.cacheContent(helpers.content());
+  nav.cacheContent(dom.content());
 
   $(window).on('popstate', function(event) {
     ajax.abortReq(); // Abort a possible existing request
@@ -63,16 +66,17 @@ $(document).ready(function() {
     // If we know the contents, we can just reuse it
     if (e.state && e.state.cached) {
       console.log('Using cached content');
-      helpers.showBackArrow(!e.state.isFirstPage);
-      helpers.content(e.state.cached);
+      dom.showBackArrow(!e.state.isFirstPage);
+      dom.content(e.state.cached);
       setClickHandlers();
+      if (e.state.scrollState) $('body').scrollTop(e.state.scrollState);
       return;
     }
 
     // If the data isn't cached for some reason, let's fetch it
     ajax.fetchContent(window.location.href, function(content) {
       if (content) {
-        helpers.content(content);
+        dom.content(content);
         setClickHandlers();
       }
     });
