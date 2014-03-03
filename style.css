@@ -217,7 +217,6 @@ hr:last-of-type {
   margin-top: 10%;
   float: left;
   width: 9%;
-
   position: fixed;
 }
 
@@ -227,6 +226,7 @@ hr:last-of-type {
   cursor: pointer;
 
   font-size: 156pt;
+  font-weight: lighter;
   text-align: left;
   line-height: 200px;
   font-family: "Varela Round", sans-serif;

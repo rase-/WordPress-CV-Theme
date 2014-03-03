@@ -15,11 +15,6 @@ exports.findParentByClass = function(elem, clazz) {
   return elem;
 };
 
-exports.backLinkStr = (function() {
-  var backFun = function(e) { e.preventDefault(); nav.goBack() };
-  return '<p id="back"><a id="back" href="#" onclick="backFun()">Back</a></p>';
-})();
-
 exports.showBackArrow = function(show) {
   if (!show) {
     $('.nav').addClass('hidden');

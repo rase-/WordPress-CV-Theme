@@ -30,8 +30,7 @@ function setClickHandlers() {
     var post = helpers.findParentByClass($this, 'post');
 
     // Clear the content and inject the content we've got now for best effect
-    var backLink = helpers.backLinkStr;
-    helpers.content('<div class="post single">' + post.html() + backLink + '</div>');
+    helpers.content('<div class="post single">' + post.html() + '</div>');
 
     // Enable back button
     helpers.showBackArrow(true);

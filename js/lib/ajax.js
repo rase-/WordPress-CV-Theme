@@ -16,7 +16,7 @@ exports.getContent = function(pageHTML) {
 
 exports.fetchContent = function(url, cb) {
   req = $.get(url, function(pageHTML) {
-    cb(getContent(pageHTML));
+    cb(exports.getContent(pageHTML));
   });
 
   return req;
