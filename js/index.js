@@ -7,6 +7,8 @@ var attachFastClick = require('fastclick');
 attachFastClick(document.body);
 
 var supportsHistoryAPI = require('./lib/supports-history-api.js');
+var isSafari = ~navigator.userAgent.indexOf('Safari');
+var isChrome = ~navigator.userAgent.indexOf('Chrome');
 
 function setClickHandlers() {
   $('.back').click(function(e) {
@@ -33,7 +35,7 @@ function setClickHandlers() {
     // Clear the content and inject the content we've got now for best effect
     // and navigate to top to make it seem like we moved to another page
     dom.content('<div class="post single">' + post.html() + '</div>');
-    $('body').scrollTop(0);
+    $(document).scrollTop(0);
 
     // Enable back button
     dom.showBackArrow(true);
@@ -69,7 +71,15 @@ $(document).ready(function() {
       dom.showBackArrow(!e.state.isFirstPage);
       dom.content(e.state.cached);
       setClickHandlers();
-      if (e.state.scrollState) $('body').scrollTop(e.state.scrollState);
+      if (e.state.scrollState) {
+        if (isSafari && !isChrome) { // user agent is purely safari
+          setTimeout(function() {
+            $(document).scrollTop(e.state.scrollState);
+          }, 10);
+        } else {
+          $(document).scrollTop(e.state.scrollState);
+        }
+      }
       return;
     }
 
