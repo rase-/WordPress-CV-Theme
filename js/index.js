@@ -10,13 +10,15 @@ var supportsHistoryAPI = require('./lib/supports-history-api.js');
 var isSafari = ~navigator.userAgent.indexOf('Safari');
 var isChrome = ~navigator.userAgent.indexOf('Chrome');
 
-function setClickHandlers() {
+function setBackButtonHandler() {
   $('.back').click(function(e) {
     e.preventDefault();
     nav.goBack();
   });
+};
 
-  $('.post a').click(function(e) {
+function setClickHandlers() {
+ $('.post a').click(function(e) {
     ajax.abortReq();
 
     // Navigate only if the url is in local context
@@ -55,6 +57,8 @@ function setClickHandlers() {
 $(document).ready(function() {
   // Normal requests if histry API not supported
   if (!supportsHistoryAPI) return;
+
+  setBackButtonHandler();
 
   setClickHandlers();
   nav.cacheContent(dom.content());
