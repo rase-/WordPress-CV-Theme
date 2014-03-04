@@ -173,9 +173,8 @@ hr:last-of-type {
 }
 
 .post.page {
-  margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 80%;
 }
 
 @media screen and (min-width: 900px) {
@@ -256,6 +255,11 @@ hr:last-of-type {
   .post {
     margin-left: auto;
     margin-right: auto;
+    width: 90%;
+  }
+
+  .post.page {
+    width: 90%;
   }
 
   body {
