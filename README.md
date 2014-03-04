@@ -21,7 +21,7 @@ Just clone this repository in your WordPress installation's wp-content/themes fo
 Fast
 ----
 
-The theme uses the HTML5 history API to bring you an incredible user experience, where the users sees immediate consequences for interactions. Some content is immediately shown, and more content displayed whenever it gets loaded.
+The theme uses the HTML5 history API to bring you an incredible user experience, where the user sees immediate consequences for interactions. Some content is immediately shown, and more content displayed whenever it gets loaded.
 
 Tricks
 ------
